@@ -1,0 +1,38 @@
+<div class="my-5 d-flex flex-column justify-content-center align-items-center">
+    <h1>Add Doctor</h1>
+    <h3 class="text-center mb-2">{{message}}</h3>
+    <form ngNativeValidate style="width: 50%; border: 2px solid rgb(130, 130, 130); padding: 30px; border-radius: 10px;">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input required type="text" class="form-control" name="name" id="name" [(ngModel)]="doctor.name">
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Enter age</label>
+            <input required type="number" class="form-control" name="age" id="age" [(ngModel)]="doctor.age">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Select Gender</label>
+            <div class="form-check">
+                <input required class="form-check-input" value="M" type="radio" name="gender" id="male" [(ngModel)]="doctor.gender">
+                <label class="form-check-label" for="male">
+                  Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input required class="form-check-input" value="F" type="radio" name="gender" id="female" [(ngModel)]="doctor.gender">
+                <label class="form-check-label" for="female">
+                  Female
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="specializedField" class="form-label">Specialized Field</label>
+            <input required type="text" class="form-control" name="specializedField" id="specializedField" [(ngModel)]="doctor.specializedField">
+        </div>
+        <div class="mb-3">
+            <label for="noOfPatientsAttended" class="form-label">Patient Attended count</label>
+            <input required type="number" class="form-control" name="noOfPatientsAttended" id="noOfPatientsAttended" [(ngModel)]="doctor.noOfPatientsAttended">
+        </div>
+        <button type="submit" class="btn btn-primary w-100" (click)="addDoctor()">Add</button>
+    </form>
+</div>

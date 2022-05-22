@@ -1,0 +1,41 @@
+<div class="my-5 d-flex flex-column justify-content-center align-items-center">
+    <h1>Add Patient</h1>
+    <h3 class="text-center mb-2">{{message}}</h3>
+    <form ngNativeValidate style="width: 50%; border: 2px solid rgb(130, 130, 130); padding: 30px; border-radius: 10px;">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input required type="text" class="form-control" name="name" id="name" [(ngModel)]="patient.name">
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Enter age</label>
+            <input required type="number" class="form-control" name="age" id="age" [(ngModel)]="patient.age">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Select Gender</label>
+            <div class="form-check">
+                <input required class="form-check-input" value="M" type="radio" name="gender" id="male" [(ngModel)]="patient.gender">
+                <label class="form-check-label" for="male">
+                  Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input required class="form-check-input" value="F" type="radio" name="gender" id="female" [(ngModel)]="patient.gender">
+                <label class="form-check-label" for="female">
+                  Female
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="visitedDoctor" class="form-label">Visited Doctor</label>
+            <select required class="form-select" name="visitedDoctor" id="visitedDoctor" [(ngModel)]="patient.visitedDoctor">
+                <option value="" disabled>Select one doctor</option>
+                <option *ngFor="let doctor of doctors" [value]="doctor.name">{{doctor.name}}-{{doctor.specializedField}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="dateOfVisit" class="form-label">Date of visit</label>
+            <input required type="date" class="form-control" name="dateOfVisit" id="dateOfVisit" [(ngModel)]="patient.dateOfVisit">
+        </div>
+        <button type="submit" class="btn btn-primary w-100" (click)="addPatient()">Add Patient</button>
+    </form>
+</div>

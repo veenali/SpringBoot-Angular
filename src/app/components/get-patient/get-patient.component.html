@@ -1,0 +1,47 @@
+<div class="p-3">
+    <form class="d-flex mb-3" role="search">
+        <input class="form-control me-2" type="search" name="patientName" [(ngModel)]="patientName" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit" (click)="getPatientByName()">Search</button>
+    </form>
+
+    <div *ngIf="message !== ''" class="text-center">
+        <img style="height: 100px; width: 100px;" src="https://thumbs.dreamstime.com/b/no-user-sign-icon-do-not-enter-person-symbol-human-avatar-red-prohibition-stop-vector-eps-216956326.jpg" alt="No patient">
+        <p>
+            {{message}}
+        </p>
+    </div>
+
+    <div *ngFor="let patient of patients" class="mb-3">
+        <div class="accordion accordion-flush" id="{{'accordionFlushExample' + patient.pId}}">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="{{'patient-info' + patient.pId}}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapseOne' + patient.pId" aria-expanded="false" [attr.aria-controls]="'flush-collapseOne' + patient.pId">
+                        {{patient.name}}
+                    </button>
+                </h2>
+                <div id="{{'flush-collapseOne' + patient.pId}}" class="accordion-collapse collapse" [attr.aria-labelledby]="'patient-info' + patient.pId" [attr.data-bs-parent]="'#accordionFlushExample' + patient.pId">
+                    <div class="accordion-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5>Age</h5>
+                                <p>{{patient.age}}</p>
+                            </div>
+                            <div>
+                                <h5>Gender</h5>
+                                <p>{{patient.gender}}</p>
+                            </div>
+                            <div>
+                                <h5>Visited Doctor</h5>
+                                <p>{{patient.visitedDoctor}}</p>
+                            </div>
+                            <div>
+                                <h5>Date of visit</h5>
+                                <p>{{patient.dateOfVisit}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
